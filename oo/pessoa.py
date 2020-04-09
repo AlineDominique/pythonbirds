@@ -8,6 +8,21 @@ class Pessoa:
     '''
     olhos = 2
     boca = 1
+    '''
+    Método de Classe: está relacionado a classe e não a instância. Ele pode ser acessado tanto pela Classe quanto por sua 
+    instância, como mostrado na linha 74. Funciona como os atributos de classe.
+    Para criar metodos de classe há 2 formas, usando decoretor @staticmethod ou @classmethod, sendo o último para acessar
+    dados da própria Classe.
+    
+    '''
+    @staticmethod
+    def metodo_estatico():
+        return 42
+
+    @classmethod
+    def nome_e_atributos_de_classe(cls):
+        return f'{cls} - olhos: {cls}'
+
     def __init__(self,*filhos,nome=None, idade=None):
         '''
         Explicação  no video:
@@ -62,3 +77,6 @@ if __name__ == '__main__':
     Pessoa.olhos = 4
     print(Pessoa.olhos,aline.olhos,maria.olhos)
     print(id(Pessoa.olhos),id(aline.olhos),id(maria.olhos))
+
+    print(Pessoa.metodo_estatico(),aline.metodo_estatico())
+    print(Pessoa.nome_e_atributos_de_classe(), aline.nome_e_atributos_de_classe())
