@@ -3,7 +3,11 @@ class Pessoa:
     O atributos de instância de objetos são criados atraves do método especial __init__.
      Em python é possível criar atributos em tempo de execução para um objeto, mas este atributo é apenas para o objeto
      em que foi relacionado, nem um outro obejto do mesmo tipo terá este atributo. Como exemplo na linha 30.
+     Atributo de Classe ou Default é usado quando um valor será igual em todos os objetos. Exemplo na linha 8,9.
+
     '''
+    olhos = 2
+    boca = 1
     def __init__(self,*filhos,nome=None, idade=None):
         '''
         Explicação  no video:
@@ -40,3 +44,21 @@ if __name__ == '__main__':
     print(aline.__dict__)
     del maria.idade
     print(maria.__dict__)
+    '''
+    Atributos de Classe podem ser acessados pela própria classe e/ou pelo seus objetos. Exemplo linha 49 e 50.
+    Obs: O __dict__ apenas retona os atributos de instâncias, os atributos de classe não.
+    Forma de acesso aos atributos:
+        Verifica-se o atributo é de instância, criados no __init__.
+        Em caso de não existir, verifica se é um atributo da Classe.
+    '''
+    print(Pessoa.olhos)
+    print(maria.boca)
+    print(id(Pessoa.boca),id(maria.boca),id(aline.boca))
+    maria.olhos = 3
+    print(maria.__dict__)
+    print(Pessoa.olhos, aline.olhos, maria.olhos)
+    del maria.olhos
+    print(maria.__dict__)
+    Pessoa.olhos = 4
+    print(Pessoa.olhos,aline.olhos,maria.olhos)
+    print(id(Pessoa.olhos),id(aline.olhos),id(maria.olhos))
