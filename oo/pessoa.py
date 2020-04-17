@@ -37,8 +37,15 @@ class Pessoa:
     def cumprimentar(self):
         return f'Olá{id(self)}'
 
+'''Herança Simples  
+    Todos os atributos de dados e métodos da classe Mãe/Pai são herdados por suas
+    classes filhas(os).
+'''
+class Mulher(Pessoa):
+    pass
+
 if __name__ == '__main__':
-    aline = Pessoa(nome='Aline')
+    aline = Mulher(nome='Aline')
     maria = Pessoa(aline,nome='Maria Benedita')
     print(Pessoa.cumprimentar(maria))
     print(id(maria))
@@ -80,3 +87,11 @@ if __name__ == '__main__':
 
     print(Pessoa.metodo_estatico(),aline.metodo_estatico())
     print(Pessoa.nome_e_atributos_de_classe(), aline.nome_e_atributos_de_classe())
+
+    '''Método isinstance: este método retorna um booleano True: se o objeto é do tipo
+     do segundo argumento e False: se o objeto é não é do tipo. Abaixo exemplo:'''
+    anonimo = Pessoa('Anonimo')
+    print(isinstance(anonimo,Pessoa))
+    print(isinstance(anonimo,Mulher))
+    print(isinstance(aline, Pessoa))
+    print(isinstance(aline, Mulher))
