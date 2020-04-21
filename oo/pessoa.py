@@ -35,17 +35,28 @@ class Pessoa:
         self.filhos = list(filhos)
 
     def cumprimentar(self):
-        return f'Olá{id(self)}'
+        return f'Olá, meu nome é {self.nome}'
 
 '''Herança Simples  
     Todos os atributos de dados e métodos da classe Mãe/Pai são herdados por suas
     classes filhas(os).
 '''
 class Mulher(Pessoa):
-    pass
+    def cumprimentar(self):
+        '''
+        o metodo super(): sempre retornará o resultado da classe pai.
+        '''
+        cumprimentar_ola = super().cumprimentar()
+        return f'{cumprimentar_ola}. Aperto de Mão.'
+'''
+    Sobrescrita de Atributo: Exemplo com a Classe Mutante.
+'''
+class Mutante(Pessoa):
+    olhos = 3
 
 if __name__ == '__main__':
     aline = Mulher(nome='Aline')
+    mutante= Mutante(nome='Mutante')
     maria = Pessoa(aline,nome='Maria Benedita')
     print(Pessoa.cumprimentar(maria))
     print(id(maria))
@@ -81,7 +92,6 @@ if __name__ == '__main__':
     print(Pessoa.olhos, aline.olhos, maria.olhos)
     del maria.olhos
     print(maria.__dict__)
-    Pessoa.olhos = 4
     print(Pessoa.olhos,aline.olhos,maria.olhos)
     print(id(Pessoa.olhos),id(aline.olhos),id(maria.olhos))
 
@@ -95,3 +105,7 @@ if __name__ == '__main__':
     print(isinstance(anonimo,Mulher))
     print(isinstance(aline, Pessoa))
     print(isinstance(aline, Mulher))
+    print(aline.olhos)
+    print(mutante.olhos)
+    print(aline.cumprimentar())
+    print(mutante.cumprimentar())
