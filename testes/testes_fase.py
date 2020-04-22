@@ -55,7 +55,12 @@ class PassaroFake(AtorFake):
 
     def foi_lancado(self):
         return self._lancado
-
+    '''Explicação Aula Tratamento de Exceção: Uma execeção pode ser um Erro ou um trecho de código excepcional que pode
+    que futuramente pode ser alterado futuramente.
+    Para tratar uma execeção usa-se:
+            try:
+            :except
+            else'''
     def lancar(self, angulo, tempo):
         if self._lancado:
             raise DuploLancamentoExcecao()
